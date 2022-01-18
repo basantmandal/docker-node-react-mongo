@@ -21,6 +21,12 @@ You must have Docker Installed in your System ! Docker version >= 20.10.x & Dock
 #### Then you can check the status of the containers by running:
 `$ docker ps`
 
+#### Docker Bash:
+
+1. docker exec -it MERN-React-Backend bash
+2. docker exec -it MERN-React-Frontend
+3. docker exec -it MERN-Node14-API
+
 ![Logo](docs/docker_ps.png) 
 
 ### Url Links
