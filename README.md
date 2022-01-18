@@ -23,9 +23,9 @@ You must have Docker Installed in your System ! Docker version >= 20.10.x & Dock
 
 #### Docker Bash:
 
-1. docker exec -it MERN-React-Backend bash
-2. docker exec -it MERN-React-Frontend
-3. docker exec -it MERN-Node14-API
+1. `$ docker exec -it MERN-React-Backend bash`
+2. `$ docker exec -it MERN-React-Frontend`
+3. `$ docker exec -it MERN-Node14-API`
 
 ![Logo](docs/docker_ps.png) 
 
