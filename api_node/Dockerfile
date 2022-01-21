@@ -6,10 +6,6 @@ WORKDIR /usr/src/app
 # Copy dependency definitions
 COPY package*.json ./
 
-
-RUN ls -al
-
-
 # Install dependecies
 RUN npm install
 
