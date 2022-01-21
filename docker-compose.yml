@@ -6,7 +6,7 @@ services:
       context: ./api_node
       dockerfile: Dockerfile
     container_name: '${COMPOSE_PROJECT_NAME}-Node14-API'
-    restart: unless-stopped
+    restart: on-failure
     environment:
       - NODE_ENV=${NODE_MODE}
     ports:
@@ -22,7 +22,7 @@ services:
     container_name: '${COMPOSE_PROJECT_NAME}-React-Frontend'
     depends_on:
       - server_node
-    restart: unless-stopped
+    restart: on-failure
     environment:
       - NODE_ENV=${NODE_MODE}
     ports:
@@ -37,7 +37,7 @@ services:
     container_name: '${COMPOSE_PROJECT_NAME}-React-Backend'
     depends_on:
       - server_node
-    restart: unless-stopped
+    restart: on-failure
     environment:
       - NODE_ENV=${NODE_MODE}
     ports:
@@ -50,7 +50,7 @@ services:
     container_name: '${COMPOSE_PROJECT_NAME}-Mongo'
     depends_on:
       - server_node
-    restart: unless-stopped
+    restart: on-failure
     environment:
       - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME_ROOT}
       - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD_ROOT}
