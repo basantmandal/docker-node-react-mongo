@@ -19,7 +19,7 @@ bower_components
 build/Release
 
 # Dependency directories
-node_modules/
+node_moduless/
 jspm_packages/
 
 # TypeScript v1 declaration files
@@ -47,6 +47,16 @@ typings/
 
 # Visual Studio and VSCode projects
 .vscode/
+
+# misc
+.idea
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+
 
 # MongoDB Data
 *.wt
