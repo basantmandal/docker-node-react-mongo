@@ -1,61 +1,61 @@
-version: "3"
+version: '3'
 
 services:
-  server_node:
-    build:
-      context: ./api_node
-      dockerfile: Dockerfile
-    container_name: '${COMPOSE_PROJECT_NAME}-Node14-API'
-    restart: on-failure
-    environment:
-      - NODE_ENV=${NODE_MODE}
-    ports:
-      - '3001:3001'
-    volumes:
-      - ./api_node:/usr/src/app
-      - /usr/src/app/node_modules
-      - ./api_node/error.log:/usr/src/app/error.log
-  frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    container_name: '${COMPOSE_PROJECT_NAME}-React-Frontend'
-    depends_on:
-      - server_node
-    restart: on-failure
-    environment:
-      - NODE_ENV=${NODE_MODE}
-    ports:
-      - '3002:3002'
-    volumes:
-      - ./frontend:/usr/src/app
-      - /usr/src/app/node_modules
-  backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-    container_name: '${COMPOSE_PROJECT_NAME}-React-Backend'
-    depends_on:
-      - server_node
-    restart: on-failure
-    environment:
-      - NODE_ENV=${NODE_MODE}
-    ports:
-      - '3003:3003'
-    volumes:
-      - ./backend:/usr/src/app
-      - /usr/src/app/node_modules
-  mongo:
-    image: mongo
-    container_name: '${COMPOSE_PROJECT_NAME}-Mongo'
-    depends_on:
-      - server_node
-    restart: on-failure
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME_ROOT}
-      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD_ROOT}
-    ports:
-      - "27017:27017"
-    volumes:
-      - ./data/mongodb/mongod.conf:/etc/mongod.conf
-      - ./data/mongodb/data/:/data/db
+    server_node:
+        build:
+            context: ./api_node
+            dockerfile: Dockerfile
+        container_name: '${COMPOSE_PROJECT_NAME}-Node14-API'
+        restart: on-failure
+        environment:
+            - NODE_ENV=${NODE_MODE}
+        ports:
+            - '3001:3001'
+        volumes:
+            - ./api_node:/usr/src/app
+            - /usr/src/app/node_modules
+            - ./api_node/error.log:/usr/src/app/error.log
+    frontend:
+        build:
+            context: ./frontend
+            dockerfile: Dockerfile
+        container_name: '${COMPOSE_PROJECT_NAME}-React-Frontend'
+        depends_on:
+            - server_node
+        restart: on-failure
+        environment:
+            - NODE_ENV=${NODE_MODE}
+        ports:
+            - '3002:3002'
+        volumes:
+            - ./frontend:/usr/src/app
+            - /usr/src/app/node_modules
+    backend:
+        build:
+            context: ./backend
+            dockerfile: Dockerfile
+        container_name: '${COMPOSE_PROJECT_NAME}-React-Backend'
+        depends_on:
+            - server_node
+        restart: on-failure
+        environment:
+            - NODE_ENV=${NODE_MODE}
+        ports:
+            - '3003:3003'
+        volumes:
+            - ./backend:/usr/src/app
+            - /usr/src/app/node_modules
+    mongo:
+        image: mongo
+        container_name: '${COMPOSE_PROJECT_NAME}-Mongo'
+        depends_on:
+            - server_node
+        restart: on-failure
+        environment:
+            - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME_ROOT}
+            - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD_ROOT}
+        ports:
+            - '27017:27017'
+        volumes:
+            - ./data/mongodb/mongod.conf:/etc/mongod.conf
+            - ./data/mongodb/data/:/data/db
